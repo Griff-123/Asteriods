@@ -1,7 +1,8 @@
 import pygame
+import constants
 
 def main():
-    print("Starting asteroids!")
+    print(f"Starting asteroids!\nScreen width: {constants.SCREEN_WIDTH}\nScreen height: {constants.SCREEN_HEIGHT}")
 
 if __name__ == "__main__":
     main()
