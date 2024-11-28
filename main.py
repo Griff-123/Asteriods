@@ -18,9 +18,9 @@ def main():
         screen.fill((0,0,0))
         user.draw(screen)
         pygame.display.flip()
+        user.update(dt)
         fps.tick(60)
         dt = fps.get_time() / 1000
-
 
 
 
