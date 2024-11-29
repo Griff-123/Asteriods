@@ -4,21 +4,24 @@ from player import *
 from asteroid import *
 from asteroidfield import *
 import sys
+from shot import *
 
 
 def main():
     pygame.init
     fps = pygame.time.Clock()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screens = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
     updatable_group = pygame.sprite.Group()
     drawable_group = pygame.sprite.Group()
     asteroids_group = pygame.sprite.Group()
+    shot_group = pygame.sprite.Group()
    
     Asteroid.containers = (asteroids_group, updatable_group, drawable_group)
     AsteroidField.containers = (updatable_group)
+    
     asteroid_field = AsteroidField()
-
+    Shot.containers = (updatable_group, drawable_group, shot_group)
     Player.containers = (updatable_group, drawable_group)
     user = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
@@ -43,10 +46,10 @@ def main():
                 sys.exit()
             
 
-        screen.fill((0,0,0))
+        screens.fill((0,0,0))
         
         for obj in drawable_group:
-            obj.draw(screen)
+            obj.draw(screens)
         
         pygame.display.flip()
         
