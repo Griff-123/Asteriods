@@ -8,8 +8,7 @@ from main import *
 class Player(CircleShape):
     def __init__(self, x, y):
         self.radius = PLAYER_RADIUS
-        rotation = 0
-        self.rotation = rotation
+        self.rotation = 0
         super().__init__(x, y, self.radius)
     
     # in the player class
@@ -22,7 +21,7 @@ class Player(CircleShape):
         return [a, b, c]
     
     def draw(self, screen):
-        pygame.draw.polygon(screen, (255,255,255), Player.triangle(self), 2 )
+        pygame.draw.polygon(screen, (255,255,255), self.triangle(), 2 )
 
     def rotate(self, dt):
         self.rotation += (PLAYER_TURN_SPEED * dt)
@@ -31,13 +30,13 @@ class Player(CircleShape):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
-            Player.rotate(self, dt * -1)
+            Player.rotate(self, -dt)
         if keys[pygame.K_d]:
             Player.rotate(self, dt)
         if keys[pygame.K_w]:
             Player.move(self, dt)
         if keys[pygame.K_s]:
-            Player.move(self, dt * -1)
+            Player.move(self, -dt)
 
 
 
