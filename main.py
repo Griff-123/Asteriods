@@ -3,6 +3,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+import sys
 
 
 def main():
@@ -32,10 +33,16 @@ def main():
                 return
         
        
-        
         for obj in updatable_group:
             obj.update(dt)
         
+        for obj in asteroids_group:
+            if obj.collision(user) == True:
+                print("Game Over")
+                pygame.quit()
+                sys.exit()
+            
+
         screen.fill((0,0,0))
         
         for obj in drawable_group:
